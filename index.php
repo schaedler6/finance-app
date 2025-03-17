@@ -49,10 +49,15 @@
     </div>
 </body>
 </html>
-<?php 
-require "db.php";
-$email = "admin@email.com";
-$stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
-$stmt->execute([$email]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-var_dump($user);
+<?php
+session_start();
+
+if (isset($_SESSION['id'])) {
+
+    header("Location: dashboard.php");
+} else {
+
+    header("Location: login.php");
+}
+exit;
+?>

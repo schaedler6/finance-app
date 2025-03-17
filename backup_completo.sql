@@ -1,5 +1,4 @@
-CREATE DATABASE financas_db;
-USE financas_db;
+
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
