@@ -9,16 +9,16 @@
     "3":[a],
     "4":[b]
   } },
-
-  "Juliano": {"tarefas":{
+{"Juliano": {"tarefas":{
   "3":[b,c,e]
+} },
+{
+  "Rafael Leão":{"tarefas":{
+    "1":[d]
+    "4":[b, c]
 } },
 
   "Luiz Pulz": {"tarefas":{
   "6":[a,b,c]
   } }
-
-
-
-
 }
