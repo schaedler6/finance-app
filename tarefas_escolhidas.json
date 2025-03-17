@@ -1,24 +1,66 @@
 {
-  "Gabriel Barros": {"tarefas":{
+ 
+ "Gabriel Barros": {"tarefas":{
     "1":[a,b,c],
     "3":[d]
   } },
-
+  { "Rafael Matielli": {"tarefas":{
+    "4":[a, b, d],
+  } }
+{
   "Felipe Jansen: {"tarefas":{
     "1":[d],
     "3":[a],
     "4":[b]
   } },
-{"Juliano": {"tarefas":{
-  "3":[b,c,e]
-} },
 {
-  "Rafael Leão":{"tarefas":{
-    "1":[d]
-    "4":[b, c]
-} },
-
-  "Luiz Pulz": {"tarefas":{
-  "6":[a,b,c]
-  } }
+  "Alan Cornely: {"tarefas":{
+    "2":[b],
+    "4":[a],
+    "6":[c]
+  } },
+{
+    "Patrik Missio": {"tarefas":{
+  "2":[a,b,c]
+    } },
+  "jessica": {"tarefas":{
+    "3":[d],
+    "4":[c,d]
+  }}
+  "Gabriel Barros": {
+    "tarefas": {
+      "1": ["a", "b", "c"],
+      "3": ["d"]
+    }
+  },
+  "Felipe Jansen": {
+    "tarefas": {
+      "1": ["d"],
+      "3": ["a"],
+      "4": ["b"]
+    }
+  },
+  "Juliano": {
+    "tarefas": {
+      "3": ["b", "c", "e"]
+    }
+  },
+  "Rafael Leão": {
+    "tarefas": {
+      "1": ["d"],
+      "4": ["b", "c"]
+    }
+  },
+  "Luiz Pulz": {
+    "tarefas": {
+      "6": ["a", "b", "c"]
+    }
+  },
+  "Kelvin Moraes": {
+    "tarefas": {
+      "2": ["a"],
+      "5": ["d"],
+      "6": ["e"]
+    }
+  }
 }
