@@ -2,12 +2,15 @@
   "Gabriel Barros": {"tarefas":{
     "1":[a,b,c],
     "3":[d]
-  } }
-}
+  } },
 {
   "Felipe Jansen: {"tarefas":{
     "1":[d],
     "3":[a],
     "4":[b]
-  } }
+  } },
+{  
+  "Juliano": {"tarefas":{
+  "3":[b,c,e]
+} }
 }
