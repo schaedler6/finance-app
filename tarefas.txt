@@ -1,36 +1,36 @@
 1. Funcionalidades Principais a Implementar
-    Página de Relatórios Completa: Criar uma página relatorios.php com gráficos e tabelas detalhadas sobre as finanças do usuário.
-    Gerenciamento de Categorias: Desenvolver a página categorias.php para permitir criar, editar e excluir categorias.
-    Edição e Exclusão de Transações: Adicionar funcionalidade para editar e excluir receitas e despesas existentes.
-    Perfil de Usuário: Criar página para visualizar e editar informações do perfil do usuário.
-    Filtros Avançados: Implementar filtros por data, categoria e valor nas páginas de receitas e despesas.
+    a. Página de Relatórios Completa: Criar uma página relatorios.php com gráficos e tabelas detalhadas sobre as finanças do usuário.
+    b. Gerenciamento de Categorias: Desenvolver a página categorias.php para permitir criar, editar e excluir categorias.
+    c. Edição e Exclusão de Transações: Adicionar funcionalidade para editar e excluir receitas e despesas existentes.
+    d. Perfil de Usuário: Criar página para visualizar e editar informações do perfil do usuário.
+    e. Filtros Avançados: Implementar filtros por data, categoria e valor nas páginas de receitas e despesas.
 2. Melhorias Técnicas
-    Validação de Dados: Implementar validação mais robusta nos formulários (formatos de moeda, datas, etc).
-    Segurança Avançada: Melhorar a segurança contra injeção SQL, XSS e implementar CSRF tokens.
-    Otimização de Consultas: Melhorar a eficiência das consultas SQL para carregar os dados mais rapidamente.
-    Sistema de Paginação: Adicionar paginação nas tabelas para melhor performance com muitos registros.
-    Responsividade: Garantir que o layout seja totalmente responsivo para uso em dispositivos móveis.
+    a. Validação de Dados: Implementar validação mais robusta nos formulários (formatos de moeda, datas, etc).
+    b. Segurança Avançada: Melhorar a segurança contra injeção SQL, XSS e implementar CSRF tokens.
+    c. Otimização de Consultas: Melhorar a eficiência das consultas SQL para carregar os dados mais rapidamente.
+    d. Sistema de Paginação: Adicionar paginação nas tabelas para melhor performance com muitos registros.
+    e. Responsividade: Garantir que o layout seja totalmente responsivo para uso em dispositivos móveis.
 3. Melhorias na Interface
-    Gráficos Dinâmicos: Substituir dados estáticos por dados reais nos gráficos do dashboard.
-    Tema Personalizável: Permitir que o usuário personalize as cores e tema da interface.
-    Notificações: Implementar sistema de alertas e notificações (ex: quando os gastos ultrapassarem certo limite).
-    Calendário Visual: Criar visualização em calendário para as transações.
-    Modo Escuro: Adicionar opção de modo escuro para a interface.
+    a. Gráficos Dinâmicos: Substituir dados estáticos por dados reais nos gráficos do dashboard.
+    b. Tema Personalizável: Permitir que o usuário personalize as cores e tema da interface.
+    c. Notificações: Implementar sistema de alertas e notificações (ex: quando os gastos ultrapassarem certo limite).
+    d. Calendário Visual: Criar visualização em calendário para as transações.
+    e. Modo Escuro: Adicionar opção de modo escuro para a interface.
 4. Recursos Avançados
-    Exportação de Dados: Permitir exportar relatórios e transações em formatos como PDF, CSV ou Excel.
-    Metas Financeiras: Criar sistema para definir e acompanhar metas de economia.
-    Recorrência de Transações: Permitir cadastrar transações recorrentes (mensais, semanais, etc).
-    Multi-usuário: Implementar sistema para compartilhar controle financeiro com familiares.
-    Planejamento Orçamentário: Criar módulo para planejar orçamentos mensais e anuais.
+    a. Exportação de Dados: Permitir exportar relatórios e transações em formatos como PDF, CSV ou Excel.
+    b. Metas Financeiras: Criar sistema para definir e acompanhar metas de economia.
+    c. Recorrência de Transações: Permitir cadastrar transações recorrentes (mensais, semanais, etc).
+    d. Multi-usuário: Implementar sistema para compartilhar controle financeiro com familiares.
+    e. Planejamento Orçamentário: Criar módulo para planejar orçamentos mensais e anuais.
 5. Qualidade e Performance
-    Testes Automatizados: Implementar testes unitários e de integração para garantir a qualidade do código.
-    Tratamento de Erros: Melhorar o tratamento e exibição de erros para o usuário.
-    Cache de Dados: Implementar sistema de cache para melhorar a performance.
-    Logs de Atividade: Criar logs para rastrear ações importantes no sistema.
-    Backup Automático: Implementar sistema de backup automático dos dados.
+    a. Testes Automatizados: Implementar testes unitários e de integração para garantir a qualidade do código.
+    b. Tratamento de Erros: Melhorar o tratamento e exibição de erros para o usuário.
+    c. Cache de Dados: Implementar sistema de cache para melhorar a performance.
+    d. Logs de Atividade: Criar logs para rastrear ações importantes no sistema.
+    e. Backup Automático: Implementar sistema de backup automático dos dados.
 6. Tarefas Específicas
-    Corrigir a página index.php que contém código HTML desnecessário antes do redirecionamento.
-    Implementar consultas em tempo real sobre dados financeiros usando AJAX.
-    Adicionar suporte para múltiplas moedas e conversão automática.
-    Integrar com APIs externas (bancos ou serviços financeiros).
-    Criar um sistema de lembretes para contas a pagar.
+    a. Corrigir a página index.php que contém código HTML desnecessário antes do redirecionamento.
+    b. Implementar consultas em tempo real sobre dados financeiros usando AJAX.
+    c. Adicionar suporte para múltiplas moedas e conversão automática.
+    d. Integrar com APIs externas (bancos ou serviços financeiros).
+    e. Criar um sistema de lembretes para contas a pagar.
