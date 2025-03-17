@@ -3,7 +3,7 @@
     "1":[a,b,c],
     "3":[d]
   } },
-{
+
   "Felipe Jansen: {"tarefas":{
     "1":[d],
     "3":[a],
@@ -15,7 +15,19 @@
     "6":[c]
   } },
 {  
-  "Juliano": {"tarefas":{
+{"Juliano": {"tarefas":{
   "3":[b,c,e]
-} }
+} },
+{
+  "Rafael Leão":{"tarefas":{
+    "1":[d]
+    "4":[b, c]
+} },
+
+  "Luiz Pulz": {"tarefas":{
+  "6":[a,b,c]
+  } },
+    "Patrik Missio": {"tarefas":{
+  "2":[a,b,c]
+    } }
 }
