@@ -1,0 +1,9 @@
+# Denegar acesso direto a todos os arquivos
+Order Deny,Allow
+Deny from all
+
+# Permitir acesso apenas via requisições HTTP
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch> 
