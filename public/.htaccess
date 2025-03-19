@@ -6,7 +6,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 # Redirecionar todas as requisições para a API
-RewriteRule ^api/(.*)$ ../api/$1 [L,QSA]
+RewriteRule ^api/(.*)$ ../api/$1 [L]
 
 # Redirecionar todas as outras requisições para o index.php
-RewriteRule ^(.*)$ index.php [L,QSA] 
+RewriteRule ^(.*)$ index.php [L] 
