@@ -1,4 +1,7 @@
-{
+ "Schaedler6": {"tarefas":{
+    "5":[a,b,c],
+    
+  } },{
  
  "Gabriel Barros": {"tarefas":{
     "1":[a,b,c],
@@ -55,6 +58,12 @@
       "4": ["b", "c"]
     }
   },
+  "Vitor Noe": {
+    "tarefas": {
+      "3": ["c"],
+      "5": ["b", "c"]
+   }
+  },
   "Luiz Pulz": {
     "tarefas": {
       "6": ["a", "b", "c"]
@@ -65,6 +74,11 @@
       "2": ["a"],
       "5": ["d"],
       "6": ["e"]
+    }
+  },
+  "João": {
+    "tarefas": {
+      "3": ["a","b", "c", "d", "e"],
     },
   }
    "Francisco Arend": {
