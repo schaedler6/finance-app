@@ -1,5 +1,5 @@
 <?php
-require_once '../api/controllers/AuthController.php';
+require_once '../api/controllers/auth_controller.php';
 
 $auth = new AuthController();
 
