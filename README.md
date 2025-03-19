@@ -19,26 +19,33 @@ finance-app/
 │   ├── config/
 │   │   └── database.php
 │   ├── controllers/
-│   │   ├── AuthController.php
-│   │   └── TransacaoController.php
+│   │   ├── auth_controller.php
+│   │   ├── categoria_controller.php
+│   │   └── transacao_controller.php
 │   ├── models/
-│   │   ├── Usuario.php
-│   │   ├── Transacao.php
-│   │   └── Categoria.php
-│   └── routes/
-│       ├── auth.php
-│       └── transacoes.php
+│   │   ├── categoria_model.php
+│   │   └── transacao_model.php
+│   └── .htaccess
 ├── public/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── main.js
+│   ├── dashboard/
+│   │   ├── dashboard.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── receitas/
+│   │   ├── receitas.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── despesas/
+│   │   ├── despesas.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── login/
+│   │   ├── login.php
+│   │   ├── style.css
+│   │   └── script.js
 │   ├── index.php
-│   ├── login.php
-│   ├── dashboard.php
-│   ├── receitas.php
-│   └── despesas.php
-└── database.sql
+│   └── .htaccess
+└── README.md
 ```
 
 ## Instalação

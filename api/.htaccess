@@ -6,4 +6,4 @@ Deny from all
 <FilesMatch "\.php$">
     Order Allow,Deny
     Allow from all
-</FilesMatch> 
+</FilesMatch>
