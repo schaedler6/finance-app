@@ -1,6 +1,6 @@
 # Controle Financeiro
 
-Um aplicativo simples de controle financeiro desenvolvido com PHP, MySQL, HTML e CSS.
+Um aplicativo de controle financeiro desenvolvido com PHP, MySQL, HTML, CSS e JavaScript, seguindo a arquitetura MVC.
 
 ## Funcionalidades
 
@@ -9,23 +9,51 @@ Um aplicativo simples de controle financeiro desenvolvido com PHP, MySQL, HTML e
 - Dashboard com resumo financeiro
 - Gráfico de distribuição de gastos
 - Autenticação de usuários
+- API RESTful
 
 ## Estrutura do Projeto
 
-- `login.php`: Página de login
-- `dashboard.php`: Página principal com resumo financeiro
-- `receitas.php`: Gerenciamento de receitas
-- `despesas.php`: Gerenciamento de despesas
-- `db.php`: Conexão com o banco de dados
-- `database.sql`: Script de criação do banco de dados
-- `logout.php`: Script para encerrar a sessão
+```
+finance-app/
+├── api/
+│   ├── config/
+│   │   └── database.php
+│   ├── controllers/
+│   │   ├── auth_controller.php
+│   │   ├── categoria_controller.php
+│   │   └── transacao_controller.php
+│   ├── models/
+│   │   ├── categoria_model.php
+│   │   └── transacao_model.php
+│   └── .htaccess
+├── public/
+│   ├── dashboard/
+│   │   ├── dashboard.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── receitas/
+│   │   ├── receitas.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── despesas/
+│   │   ├── despesas.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── login/
+│   │   ├── login.php
+│   │   ├── style.css
+│   │   └── script.js
+│   ├── index.php
+│   └── .htaccess
+└── README.md
+```
 
 ## Instalação
 
 1. Clone este repositório
 2. Configure um servidor web com PHP e MySQL
 3. Importe o arquivo `database.sql` para criar o banco de dados
-4. Configure as credenciais do banco de dados no arquivo `db.php`
+4. Configure as credenciais do banco de dados no arquivo `api/config/database.php`
 5. Acesse o aplicativo pelo navegador
 
 ## Usuário Padrão
@@ -33,9 +61,33 @@ Um aplicativo simples de controle financeiro desenvolvido com PHP, MySQL, HTML e
 - Email: admin@email.com
 - Senha: 123456
 
+## Tecnologias Utilizadas
+
+- PHP 7.4+
+- MySQL 5.7+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Chart.js para gráficos
+
+## API Endpoints
+
+### Autenticação
+- POST /api/auth.php
+  - action: login
+  - action: logout
+  - action: check
+
+### Transações
+- GET /api/transacoes.php
+- POST /api/transacoes.php
+  - action: create
+  - action: totals
+  - action: categorias
+
 ## Contribuição
 
-Este projeto foi desenvolvido como base para que estudantes possam praticar suas habilidades em PHP, MySQL, HTML e CSS. Sinta-se à vontade para fazer pull requests e contribuir com o projeto.
+Este projeto foi desenvolvido como base para que estudantes possam praticar suas habilidades em desenvolvimento web. Sinta-se à vontade para fazer pull requests e contribuir com o projeto.
 
 ## Próximos Passos
 
@@ -43,3 +95,5 @@ Este projeto foi desenvolvido como base para que estudantes possam praticar suas
 - Adicionar funcionalidade de gerenciamento de categorias
 - Implementar gráficos dinâmicos com dados reais
 - Adicionar funcionalidade de exportação de dados
+- Implementar testes automatizados
+- Adicionar documentação da API
