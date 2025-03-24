@@ -215,32 +215,35 @@ $receitas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="categoria_id">Categoria</label>
-                    <select id="categoria_id" name="categoria_id" class="form-control" required>
+                    <select id="categoria_id" name="categoria_id" class="form-control" required v-model="form.categoria_id">
                         <option value="">Selecione uma categoria</option>
-                        <?php foreach ($categorias as $categoria): ?>
-                            <option value="<?php echo $categoria['id']; ?>">
-                                <?php echo htmlspecialchars($categoria['nome']); ?>
-                            </option>
-                        <?php endforeach; ?>
+                        <option v-for="categoria in categorias" :value="categoria.id" :key="categoria.id">
+                            {{ categoria.nome }}
+                        </option>
                     </select>
+                    <div class="error-message" v-if="errors.categoria_id">{{ errors.categoria_id }}</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <input type="text" id="descricao" name="descricao" class="form-control" required>
+                    <input type="text" id="descricao" name="descricao" class="form-control" required v-model="form.descricao">
+                    <div class="error-message" v-if="errors.descricao">{{ errors.descricao }}</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="valor">Valor (R$)</label>
-                    <input type="text" id="valor" name="valor" class="form-control" placeholder="0,00" required>
+                    <input type="text" id="valor" name="valor" class="form-control" placeholder="0,00" required 
+                           v-model="form.valor" @input="formatarValorInput">
+                    <div class="error-message" v-if="errors.valor">{{ errors.valor }}</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="data">Data</label>
-                    <input type="date" id="data" name="data" class="form-control" required>
+                    <input type="date" id="data" name="data" class="form-control" required v-model="form.data">
+                    <div class="error-message" v-if="errors.data">{{ errors.data }}</div>
                 </div>
                 
-                <button type="submit" class="btn btn-success">Cadastrar Receita</button>
+                <button type="button" class="btn btn-success" @click="handleSubmit">Cadastrar Receita</button>
             </form>
         </div>
         
