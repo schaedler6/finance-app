@@ -29,11 +29,21 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (isset($data['categoria_id']) && isset($data['descricao']) && 
                     isset($data['valor']) && isset($data['data']) && isset($data['tipo'])) {
                     
-                    if ($transacao->create($user_id, $data)) {
+                    $result = $transacao->create($user_id, $data);
+                    
+                    if ($result['success']) {
                         echo json_encode(['success' => true, 'message' => 'Transação criada com sucesso']);
                     } else {
-                        http_response_code(500);
-                        echo json_encode(['success' => false, 'message' => 'Erro ao criar transação']);
+                        http_response_code(400);
+                        if (isset($result['errors'])) {
+                            echo json_encode([
+                                'success' => false, 
+                                'message' => 'Erro de validação', 
+                                'errors' => $result['errors']
+                            ]);
+                        } else {
+                            echo json_encode(['success' => false, 'message' => 'Erro ao criar transação']);
+                        }
                     }
                 } else {
                     http_response_code(400);

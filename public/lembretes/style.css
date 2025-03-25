@@ -33,7 +33,7 @@ body {
 
 .sidebar-header i {
     font-size: 2rem;
-    color: #4CAF50;
+    color: #FF9800;
 }
 
 .sidebar-header h2 {
@@ -63,7 +63,7 @@ body {
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
     background: #f0f2f5;
-    color: #4CAF50;
+    color: #FF9800;
 }
 
 .sidebar-menu i {
@@ -127,7 +127,7 @@ body {
 
 .form-control:focus {
     outline: none;
-    border-color: #4CAF50;
+    border-color: #FF9800;
 }
 
 .form-actions {
@@ -150,12 +150,12 @@ body {
 }
 
 .btn-success {
-    background: #4CAF50;
+    background: #FF9800;
     color: white;
 }
 
 .btn-success:hover {
-    background: #45a049;
+    background: #F57C00;
 }
 
 .btn-secondary {
@@ -170,7 +170,7 @@ body {
 .btn-icon {
     background: none;
     border: none;
-    color: #f44336;
+    color: #666;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 5px;
@@ -179,6 +179,7 @@ body {
 
 .btn-icon:hover {
     background: #f0f2f5;
+    color: #FF9800;
 }
 
 .table-responsive {
@@ -209,13 +210,57 @@ tr:hover {
     background: #f9f9f9;
 }
 
-.error-message {
-    color: #dc3545;
-    font-size: 0.85rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #666;
+    text-align: center;
 }
 
-input.error, select.error, textarea.error {
-    border-color: #dc3545;
+.empty-message i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.status-pendente {
+    background-color: #FFF3E0;
+    color: #FF9800;
+}
+
+.status-pago {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+}
+
+.status-atrasado {
+    background-color: #FFEBEE;
+    color: #F44336;
+}
+
+.error-message {
+    color: #F44336;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+input.error, 
+select.error, 
+textarea.error {
+    border-color: #F44336;
 } 
