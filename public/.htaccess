@@ -10,3 +10,5 @@ RewriteRule ^api/(.*)$ ../api/$1 [L]
 
 # Redirecionar todas as outras requisições para o index.php
 RewriteRule ^(.*)$ index.php [L] 
+
+php_value include_path '.;C:\xampp\php\PEAR;C:\xampp\htdocs\k2'
