@@ -2,11 +2,14 @@ RewriteEngine On
 RewriteBase /
 
 # Permitir acesso direto a arquivos e diretórios existentes
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Redirecionar todas as requisições para a API
+# Redirecionar requisições para a API
 RewriteRule ^api/(.*)$ ../api/$1 [L]
 
 # Redirecionar todas as outras requisições para o index.php
 RewriteRule ^(.*)$ index.php [L] 
+
+php_value include_path '.;C:\xampp\php\PEAR;C:\xampp\htdocs\k2'

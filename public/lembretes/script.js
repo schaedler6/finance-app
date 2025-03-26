@@ -5,20 +5,21 @@ createApp({
         return {
             showForm: false,
             form: {
-                categoria_id: '',
+                id: null,
                 descricao: '',
                 valor: '',
-                data: new Date().toISOString().split('T')[0],
-                tipo: 'receita'
+                data_vencimento: new Date().toISOString().split('T')[0],
+                status: 'pendente'
             },
             errors: {},
-            categorias: [],
-            receitas: []
+            lembretes: [],
+            lembretesAtrasados: [],
+            lembretesProximos: []
         }
     },
     methods: {
         formatCurrency(value) {
-            return value.toLocaleString('pt-BR', {
+            return parseFloat(value).toLocaleString('pt-BR', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             })
@@ -28,15 +29,26 @@ createApp({
         },
         async loadData() {
             try {
-                // Carregar categorias
-                const categoriasResponse = await fetch('../api/transacoes.php?action=categorias&tipo=receita')
-                const categoriasData = await categoriasResponse.json()
-                this.categorias = categoriasData
+                // Carregar todos os lembretes
+                const lembretesResponse = await fetch('../api/lembretes.php')
+                const lembretesData = await lembretesResponse.json()
+                if (lembretesData.success) {
+                    this.lembretes = lembretesData.data
+                }
 
-                // Carregar receitas
-                const receitasResponse = await fetch('../api/transacoes.php?tipo=receita')
-                const receitasData = await receitasResponse.json()
-                this.receitas = receitasData
+                // Carregar lembretes atrasados
+                const atrasadosResponse = await fetch('../api/lembretes.php?atrasados=true')
+                const atrasadosData = await atrasadosResponse.json()
+                if (atrasadosData.success) {
+                    this.lembretesAtrasados = atrasadosData.data
+                }
+
+                // Carregar próximos lembretes
+                const proximosResponse = await fetch('../api/lembretes.php?proximos=true')
+                const proximosData = await proximosResponse.json()
+                if (proximosData.success) {
+                    this.lembretesProximos = proximosData.data
+                }
             } catch (error) {
                 console.error('Erro ao carregar dados:', error)
                 alert('Erro ao carregar dados. Tente novamente.')
@@ -46,18 +58,12 @@ createApp({
             this.errors = {}
             let isValid = true
             
-            // Validar categoria
-            if (!this.form.categoria_id) {
-                this.errors.categoria_id = 'Selecione uma categoria'
-                isValid = false
-            }
-            
             // Validar descrição
             if (!this.form.descricao || this.form.descricao.trim().length < 3) {
                 this.errors.descricao = 'A descrição deve ter pelo menos 3 caracteres'
                 isValid = false
-            } else if (this.form.descricao.trim().length > 100) {
-                this.errors.descricao = 'A descrição deve ter no máximo 100 caracteres'
+            } else if (this.form.descricao.trim().length > 255) {
+                this.errors.descricao = 'A descrição deve ter no máximo 255 caracteres'
                 isValid = false
             }
             
@@ -75,15 +81,15 @@ createApp({
             }
             
             // Validar data
-            if (!this.form.data) {
-                this.errors.data = 'Selecione uma data'
+            if (!this.form.data_vencimento) {
+                this.errors.data_vencimento = 'Selecione uma data de vencimento'
                 isValid = false
-            } else {
-                const dataRegex = /^\d{4}-\d{2}-\d{2}$/
-                if (!dataRegex.test(this.form.data)) {
-                    this.errors.data = 'Data inválida. Use o formato YYYY-MM-DD'
-                    isValid = false
-                }
+            }
+            
+            // Validar status
+            if (!this.form.status) {
+                this.errors.status = 'Selecione um status'
+                isValid = false
             }
             
             return isValid
@@ -94,42 +100,38 @@ createApp({
             }
             
             try {
-                const response = await fetch('../api/transacoes.php', {
+                const action = this.form.id ? 'update' : 'create'
+                const requestData = {
+                    action: action,
+                    ...this.form
+                }
+                
+                const response = await fetch('../api/lembretes.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        action: 'create',
-                        ...this.form
-                    })
+                    body: JSON.stringify(requestData)
                 })
 
                 const data = await response.json()
 
                 if (data.success) {
                     this.showForm = false
-                    this.form = {
-                        categoria_id: '',
-                        descricao: '',
-                        valor: '',
-                        data: new Date().toISOString().split('T')[0],
-                        tipo: 'receita'
-                    }
-                    this.errors = {}
+                    this.resetForm()
                     this.loadData()
-                    alert('Receita cadastrada com sucesso!')
+                    alert(this.form.id ? 'Lembrete atualizado com sucesso!' : 'Lembrete cadastrado com sucesso!')
                 } else {
                     if (data.errors) {
                         // Exibir erros de validação do servidor
                         this.errors = data.errors
                     } else {
-                        alert('Erro ao cadastrar receita: ' + data.message)
+                        alert('Erro ao processar lembrete: ' + data.message)
                     }
                 }
             } catch (error) {
-                console.error('Erro ao cadastrar receita:', error)
-                alert('Erro ao cadastrar receita. Tente novamente.')
+                console.error('Erro ao processar lembrete:', error)
+                alert('Erro ao processar lembrete. Tente novamente.')
             }
         },
         formatarValorInput(e) {
@@ -159,13 +161,38 @@ createApp({
             
             this.form.valor = valor
         },
-        async deleteReceita(id) {
-            if (!confirm('Tem certeza que deseja excluir esta receita?')) {
+        resetForm() {
+            this.form = {
+                id: null,
+                descricao: '',
+                valor: '',
+                data_vencimento: new Date().toISOString().split('T')[0],
+                status: 'pendente'
+            }
+            this.errors = {}
+        },
+        cancelarForm() {
+            this.showForm = false
+            this.resetForm()
+        },
+        editarLembrete(lembrete) {
+            this.form = {
+                id: lembrete.id,
+                descricao: lembrete.descricao,
+                valor: lembrete.valor.toString().replace('.', ','),
+                data_vencimento: lembrete.data_vencimento,
+                status: lembrete.status
+            }
+            this.showForm = true
+            window.scrollTo(0, 0)
+        },
+        async excluirLembrete(id) {
+            if (!confirm('Tem certeza que deseja excluir este lembrete?')) {
                 return
             }
 
             try {
-                const response = await fetch('../api/transacoes.php', {
+                const response = await fetch('../api/lembretes.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -180,13 +207,47 @@ createApp({
 
                 if (data.success) {
                     this.loadData()
-                    alert('Receita excluída com sucesso!')
+                    alert('Lembrete excluído com sucesso!')
                 } else {
-                    alert('Erro ao excluir receita. Tente novamente.')
+                    alert('Erro ao excluir lembrete: ' + data.message)
                 }
             } catch (error) {
-                console.error('Erro ao excluir receita:', error)
-                alert('Erro ao excluir receita. Tente novamente.')
+                console.error('Erro ao excluir lembrete:', error)
+                alert('Erro ao excluir lembrete. Tente novamente.')
+            }
+        },
+        async marcarComoPago(lembrete) {
+            try {
+                const response = await fetch('../api/lembretes.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'marcar_como_pago',
+                        id: lembrete.id
+                    })
+                })
+
+                const data = await response.json()
+
+                if (data.success) {
+                    this.loadData()
+                    alert('Lembrete marcado como pago com sucesso!')
+                } else {
+                    alert('Erro ao marcar lembrete como pago: ' + data.message)
+                }
+            } catch (error) {
+                console.error('Erro ao marcar lembrete como pago:', error)
+                alert('Erro ao marcar lembrete como pago. Tente novamente.')
+            }
+        },
+        statusTexto(status) {
+            switch(status) {
+                case 'pendente': return 'Pendente'
+                case 'pago': return 'Pago'
+                case 'atrasado': return 'Atrasado'
+                default: return status
             }
         },
         async logout() {
