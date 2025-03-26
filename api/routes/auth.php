@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/auth_controller.php';
+require_once __DIR__ . '/../controllers/auth_controller.php';
 
 header('Content-Type: application/json');
 

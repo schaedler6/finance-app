@@ -1,7 +1,7 @@
 <?php
-require_once '../config/database.php';
-require_once '../models/Usuario.php';
-require_once '../controllers/log_controller.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../controllers/log_controller.php';
 
 class AuthController {
     private $db;

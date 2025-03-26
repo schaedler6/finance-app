@@ -1,5 +1,5 @@
 <?php
-require_once '../../api/controllers/auth_controller.php';
+require_once __DIR__ . '/../../api/controllers/auth_controller.php';
 
 $auth = new AuthController();
 
