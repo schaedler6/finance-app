@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirecionar tudo para a pasta public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Se o arquivo/diretório não existir na pasta public, use o index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^public/(.*)$ public/index.php [L] 

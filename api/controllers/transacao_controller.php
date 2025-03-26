@@ -1,9 +1,10 @@
 <?php
-require_once '../config/database.php';
-require_once '../models/Transacao.php';
-require_once '../models/Categoria.php';
-require_once '../utils/Validator.php';
-require_once '../controllers/log_controller.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../models/Transacao.php';
+require_once __DIR__ . '/../models/Categoria.php';
+require_once __DIR__ . '/../utils/Validator.php';
+require_once __DIR__ . '/../controllers/log_controller.php';
+
 
 class TransacaoController {
     private $db;
