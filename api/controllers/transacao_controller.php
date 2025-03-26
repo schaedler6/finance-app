@@ -5,6 +5,7 @@ require_once __DIR__ . '/../models/Categoria.php';
 require_once __DIR__ . '/../utils/Validator.php';
 require_once __DIR__ . '/../controllers/log_controller.php';
 
+
 class TransacaoController {
     private $db;
     private $transacao;
