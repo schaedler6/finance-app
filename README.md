@@ -91,6 +91,20 @@ Este projeto foi desenvolvido como base para que estudantes possam praticar suas
 
 ## Próximos Passos
 
+- [x] Implementar testes automatizados
+- [ ] Implementar página de relatórios
+- [ ] Adicionar funcionalidade de gerenciamento de categorias
+- [ ] Implementar gráficos sonoros com dados reais
+- [ ] Adicionar funcionalidade de transferência de dados
+- [ ] Adicionar documentação da API
+
+- [x] Implementar testes automatizados
+- [ ] Implementar página de relatórios
+- [ ] Adicionar funcionalidade de gerenciamento de categorias
+- [ ] Implementar gráficos sonoros com dados reais
+- [ ] Adicionar funcionalidade de transferência de dados
+- [ ] Adicionar documentação da API
+
 - Implementar página de relatórios
 - Adicionar funcionalidade de gerenciamento de categorias
 - Implementar gráficos dinâmicos com dados reais
